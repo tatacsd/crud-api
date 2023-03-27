@@ -19,7 +19,7 @@ export const routes = [
     method: 'POST',
     url: '/tasks',
     handler: (req, res) => {
-      // TODO: check if the body is valid
+      // check if the body is valid
       if (!req.body.title || !req.body.description) {
         return res.writeHead(400).end(
           JSON.stringify({
@@ -28,7 +28,7 @@ export const routes = [
         );
       }
 
-      // TODO: insert the task into the database
+      // insert the task into the database
       const task = database.insert('tasks', {
         id: randomUUID(),
         title: req.body.title,
@@ -38,7 +38,7 @@ export const routes = [
         updated_at: new Date(),
       });
 
-      // TODO: return the task
+      // return the task
       res.writeHead(201);
       return res.end(JSON.stringify(task));
     },
