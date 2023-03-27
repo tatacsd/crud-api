@@ -22,12 +22,12 @@ export class Database {
     fs.writeFile('db.json', JSON.stringify(this.#database));
   }
 
-  select(table, search) {
+  select(table, filter) {
     let data = this.#database[table] ?? [];
 
-    if (search) {
+    if (filter.title || filter.description || filter.id) {
       data = data.filter((row) => {
-        return Object.entries(search) // convert the object to an array of key/value pairs
+        return Object.entries(filter) // convert the object to an array of key/value pairs
           .some(([key, value]) => {
             // check if any of the key/value pairs match
             return row[key].toLowerCase().includes(value.toLowerCase()); // case insensitive
