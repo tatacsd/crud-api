@@ -20,7 +20,7 @@ export const routes = [
       if (description) {
         filter.description = description;
       }
-      const tasks = database.select('tasks', filter ?? null);
+      const tasks = database.select('tasks', filter || null);
 
       res.end(JSON.stringify(tasks));
     },
@@ -54,6 +54,55 @@ export const routes = [
     },
   },
   {
+    method: 'PUT',
+    url: buildRouteUrl('/tasks/:id'),
+    handler: (req, res) => {
+      // TODO: check if the task exists - id is valid
+
+      const { id } = req.params;
+      const filter = {};
+      if (id) {
+        filter.id = id;
+      }
+      const task = database.select('tasks', filter || null);
+      console.log('task: ', task);
+      if (task[0].id !== id) {
+        return res.writeHead(404).end(
+          JSON.stringify({
+            message: 'Task not found',
+          })
+        );
+      }
+      // check if the body is valid - title and/or description are present
+      if (!req.body.title && !req.body.description) {
+        res.writeHead(400).end(
+          JSON.stringify({
+            message: 'Title and/or description are required',
+          })
+        );
+      }
+
+      // update the task in the database - and update the updated_at field
+      const updatedTask = database.update(
+        'tasks',
+        { id },
+        {
+          title: req.body.title ? req.body.title : task[0].title,
+          description: req.body.description
+            ? req.body.description
+            : task[0].description,
+          updated_at: new Date(),
+        }
+      );
+      console.log('updatedTask: ', updatedTask);
+      //   console.log('task: ', task);
+
+      // return the task
+      return res.writeHead(200).end(JSON.stringify(updatedTask));
+    },
+  },
+
+  {
     method: 'DELETE',
     url: buildRouteUrl('/tasks/:id'),
     handler: (req, res) => {
@@ -64,17 +113,7 @@ export const routes = [
       );
     },
   },
-  {
-    method: 'PUT',
-    url: buildRouteUrl('/tasks/:id'),
-    handler: (req, res) => {
-      return res.end(
-        JSON.stringify({
-          message: 'PUT /tasks/:id',
-        })
-      );
-    },
-  },
+
   {
     method: 'PATCH',
     url: buildRouteUrl('/tasks/:id'),
