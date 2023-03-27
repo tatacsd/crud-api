@@ -1,23 +1,34 @@
 import { randomUUID } from 'node:crypto';
 import { Database } from './database.js';
+import { buildRouteUrl } from './utils/build-route-paths.js';
 
 const database = new Database();
 
 export const routes = [
   {
     method: 'GET',
-    url: '/tasks',
+    url: buildRouteUrl('/tasks'),
     handler: (req, res) => {
-      return res.end(
-        JSON.stringify({
-          message: 'GET /tasks',
-        })
-      );
+      const { title, description } = req.query;
+      // If the title query parameter is present, only tasks with a matching title are returned.
+      // If the description query parameter is present, only tasks with a description are returned.
+      // If neither query parameter is present, all tasks are returned.
+      const filter = {};
+      if (title) {
+        filter.title = title;
+      }
+      if (description) {
+        filter.description = description;
+      }
+      const tasks = database.select('tasks', filter ?? null);
+
+      console.log(req.query);
+      res.end(JSON.stringify(tasks));
     },
   },
   {
     method: 'POST',
-    url: '/tasks',
+    url: buildRouteUrl('/tasks'),
     handler: (req, res) => {
       // check if the body is valid
       if (!req.body.title || !req.body.description) {
@@ -45,7 +56,7 @@ export const routes = [
   },
   {
     method: 'DELETE',
-    url: '/tasks/:id',
+    url: buildRouteUrl('/tasks/:id'),
     handler: (req, res) => {
       return res.end(
         JSON.stringify({
@@ -56,7 +67,7 @@ export const routes = [
   },
   {
     method: 'PUT',
-    url: '/tasks/:id',
+    url: buildRouteUrl('/tasks/:id'),
     handler: (req, res) => {
       return res.end(
         JSON.stringify({
@@ -67,7 +78,7 @@ export const routes = [
   },
   {
     method: 'PATCH',
-    url: '/tasks/:id',
+    url: buildRouteUrl('/tasks/:id'),
     handler: (req, res) => {
       return res.end(
         JSON.stringify({
