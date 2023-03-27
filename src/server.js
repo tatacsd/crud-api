@@ -5,8 +5,6 @@ import { extractQueryParams } from './utils/extract-query-params.js';
 
 const server = http.createServer(async (req, res) => {
   const { method, url } = req;
-  console.log('method', method);
-  console.log('url', url);
 
   await json(req, res);
 

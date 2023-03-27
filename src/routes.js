@@ -22,7 +22,6 @@ export const routes = [
       }
       const tasks = database.select('tasks', filter ?? null);
 
-      console.log(req.query);
       res.end(JSON.stringify(tasks));
     },
   },
