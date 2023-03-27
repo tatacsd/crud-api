@@ -66,7 +66,7 @@ export const routes = [
       }
       const task = database.select('tasks', filter || null);
       console.log('task: ', task);
-      if (task[0].id !== id) {
+      if (!task || task.length !== 1) {
         return res.writeHead(404).end(
           JSON.stringify({
             message: 'Task not found',
