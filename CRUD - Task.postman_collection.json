@@ -1,0 +1,818 @@
+{
+	"info": {
+		"_postman_id": "1816bb31-9f5f-45a2-90b4-de7cd2b39874",
+		"name": "CRUD - Task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26354974"
+	},
+	"item": [
+		{
+			"name": "Get all tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "description",
+							"value": "Create a RESTful",
+							"disabled": true
+						},
+						{
+							"key": "title",
+							"value": "live",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 - all tasks",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/tasks?title=Read about APIs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Read about APIs"
+								},
+								{
+									"key": "description",
+									"value": "read article on medium about APIs",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Mar 2023 05:08:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1526"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"c04ff0e3-dcdf-4321-90a1-d38b007fac23\",\n        \"title\": \"Build a RESTful API with Node.js\",\n        \"description\": \"Create a RESTful API using Node.js and a database of your choice\",\n        \"completed_at\": null,\n        \"created_at\": \"2023-03-27T05:08:22.824Z\",\n        \"updated_at\": \"2023-03-27T05:08:22.824Z\"\n    },\n    {\n        \"id\": \"74ee6f70-9cfc-4cdf-a4c4-5f2f80a76333\",\n        \"title\": \"Implement user authentication with Node.js\",\n        \"description\": \"Add user authentication to a Node.js application using Passport.js or a similar library\",\n        \"completed_at\": null,\n        \"created_at\": \"2023-03-27T05:08:22.824Z\",\n        \"updated_at\": \"2023-03-27T05:08:22.824Z\"\n    },\n    {\n        \"id\": \"12454c6e-165d-45b9-8b8f-86f17024142c\",\n        \"title\": \"Build a real-time chat application with Node.js\",\n        \"description\": \"Create a chat application that allows users to communicate in real-time using Node.js and Socket.io\",\n        \"completed_at\": null,\n        \"created_at\": \"2023-03-27T05:08:22.824Z\",\n        \"updated_at\": \"2023-03-27T05:08:22.824Z\"\n    },\n    {\n        \"id\": \"7aa26268-591c-4c73-9673-d143de5b1c26\",\n        \"title\": \"Create a web scraper with Node.js\",\n        \"description\": \"Build a web scraper that can extract data from a website using Node.js and a scraping library like Cheerio\",\n        \"completed_at\": null,\n        \"created_at\": \"2023-03-27T05:08:22.824Z\",\n        \"updated_at\": \"2023-03-27T05:08:22.824Z\"\n    },\n    {\n        \"id\": \"b8113981-1117-4243-ab0f-f6ccce02c698\",\n        \"title\": \"Build a command-line tool with Node.js\",\n        \"description\": \"Create a command-line tool that can perform a useful task using Node.js and a CLI library like Commander.js\",\n        \"completed_at\": null,\n        \"created_at\": \"2023-03-27T05:08:22.824Z\",\n        \"updated_at\": \"2023-03-27T05:08:22.824Z\"\n    }\n]"
+				},
+				{
+					"name": "200 - filters query both",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/tasks?title=Build&description=Create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Build"
+								},
+								{
+									"key": "description",
+									"value": "Create"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Mar 2023 05:20:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Content-Length",
+							"value": "910"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"c04ff0e3-dcdf-4321-90a1-d38b007fac23\",\n        \"title\": \"Build a RESTful API with Node.js\",\n        \"description\": \"Create a RESTful API using Node.js and a database of your choice\",\n        \"completed_at\": null,\n        \"created_at\": \"2023-03-27T05:08:22.824Z\",\n        \"updated_at\": \"2023-03-27T05:08:22.824Z\"\n    },\n    {\n        \"id\": \"12454c6e-165d-45b9-8b8f-86f17024142c\",\n        \"title\": \"Build a real-time chat application with Node.js\",\n        \"description\": \"Create a chat application that allows users to communicate in real-time using Node.js and Socket.io\",\n        \"completed_at\": null,\n        \"created_at\": \"2023-03-27T05:08:22.824Z\",\n        \"updated_at\": \"2023-03-27T05:08:22.824Z\"\n    },\n    {\n        \"id\": \"b8113981-1117-4243-ab0f-f6ccce02c698\",\n        \"title\": \"Build a command-line tool with Node.js\",\n        \"description\": \"Create a command-line tool that can perform a useful task using Node.js and a CLI library like Commander.js\",\n        \"completed_at\": null,\n        \"created_at\": \"2023-03-27T05:08:22.824Z\",\n        \"updated_at\": \"2023-03-27T05:08:22.824Z\"\n    }\n]"
+				},
+				{
+					"name": "200 - filters query title",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/tasks?title=Build",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Build"
+								},
+								{
+									"key": "description",
+									"value": "Create",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Mar 2023 05:21:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Content-Length",
+							"value": "910"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"c04ff0e3-dcdf-4321-90a1-d38b007fac23\",\n        \"title\": \"Build a RESTful API with Node.js\",\n        \"description\": \"Create a RESTful API using Node.js and a database of your choice\",\n        \"completed_at\": null,\n        \"created_at\": \"2023-03-27T05:08:22.824Z\",\n        \"updated_at\": \"2023-03-27T05:08:22.824Z\"\n    },\n    {\n        \"id\": \"12454c6e-165d-45b9-8b8f-86f17024142c\",\n        \"title\": \"Build a real-time chat application with Node.js\",\n        \"description\": \"Create a chat application that allows users to communicate in real-time using Node.js and Socket.io\",\n        \"completed_at\": null,\n        \"created_at\": \"2023-03-27T05:08:22.824Z\",\n        \"updated_at\": \"2023-03-27T05:08:22.824Z\"\n    },\n    {\n        \"id\": \"b8113981-1117-4243-ab0f-f6ccce02c698\",\n        \"title\": \"Build a command-line tool with Node.js\",\n        \"description\": \"Create a command-line tool that can perform a useful task using Node.js and a CLI library like Commander.js\",\n        \"completed_at\": null,\n        \"created_at\": \"2023-03-27T05:08:22.824Z\",\n        \"updated_at\": \"2023-03-27T05:08:22.824Z\"\n    }\n]"
+				},
+				{
+					"name": "200 - filters query description",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/tasks?description=Create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Build",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "Create"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Mar 2023 05:21:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Content-Length",
+							"value": "910"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"c04ff0e3-dcdf-4321-90a1-d38b007fac23\",\n        \"title\": \"Build a RESTful API with Node.js\",\n        \"description\": \"Create a RESTful API using Node.js and a database of your choice\",\n        \"completed_at\": null,\n        \"created_at\": \"2023-03-27T05:08:22.824Z\",\n        \"updated_at\": \"2023-03-27T05:08:22.824Z\"\n    },\n    {\n        \"id\": \"12454c6e-165d-45b9-8b8f-86f17024142c\",\n        \"title\": \"Build a real-time chat application with Node.js\",\n        \"description\": \"Create a chat application that allows users to communicate in real-time using Node.js and Socket.io\",\n        \"completed_at\": null,\n        \"created_at\": \"2023-03-27T05:08:22.824Z\",\n        \"updated_at\": \"2023-03-27T05:08:22.824Z\"\n    },\n    {\n        \"id\": \"b8113981-1117-4243-ab0f-f6ccce02c698\",\n        \"title\": \"Build a command-line tool with Node.js\",\n        \"description\": \"Create a command-line tool that can perform a useful task using Node.js and a CLI library like Commander.js\",\n        \"completed_at\": null,\n        \"created_at\": \"2023-03-27T05:08:22.824Z\",\n        \"updated_at\": \"2023-03-27T05:08:22.824Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "post a task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    title: 'Build a RESTful API with Node.js',\n    description: 'Create a RESTful API using Node.js and a database of your choice',\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "400 - without both",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Mar 2023 04:28:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Title and description are required\"\n}"
+				},
+				{
+					"name": "201 - create task",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Read about APIs\",\n    \"description\" : \"read article on medium about APIs\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Mar 2023 04:34:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"5972964e-ee54-43c3-842d-e10afd8b23f8\",\n    \"title\": \"Read about APIs\",\n    \"description\": \"read article on medium about APIs\",\n    \"completed_at\": null,\n    \"created_at\": \"2023-03-27T04:34:40.002Z\",\n    \"updated_at\": \"2023-03-27T04:34:40.002Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "edit a task",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"title\": \"Build a RESTful API with Node.js - lives\",\n    \"description\": \"Create a RESTful API using Node.js and a database of your choice - livesssss\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/tasks/74ee6f70-9cfc-4cdf-a4c4-5f2f80a76333",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks",
+						"74ee6f70-9cfc-4cdf-a4c4-5f2f80a76333"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "400 - without both",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Mar 2023 04:28:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Title and description are required\"\n}"
+				},
+				{
+					"name": "201 - create task",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Read about APIs\",\n    \"description\" : \"read article on medium about APIs\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Mar 2023 04:34:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"5972964e-ee54-43c3-842d-e10afd8b23f8\",\n    \"title\": \"Read about APIs\",\n    \"description\": \"read article on medium about APIs\",\n    \"completed_at\": null,\n    \"created_at\": \"2023-03-27T04:34:40.002Z\",\n    \"updated_at\": \"2023-03-27T04:34:40.002Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "completed task",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"description\": \"Create a RESTful API using Node.js and a database of your choice - live\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/tasks/c04ff0e3-dcdf-4321-90a1-d38b007fac23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks",
+						"c04ff0e3-dcdf-4321-90a1-d38b007fac23"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 - set task to complete",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n    \"description\": \"Create a RESTful API using Node.js and a database of your choice - live\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/tasks/12454c6e-165d-45b9-8b8f-86f17024142c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks",
+								"12454c6e-165d-45b9-8b8f-86f17024142c"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Mar 2023 07:22:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"12454c6e-165d-45b9-8b8f-86f17024142c\",\n    \"title\": \"Build a real-time chat application with Node.js\",\n    \"description\": \"Create a chat application that allows users to communicate in real-time using Node.js and Socket.io\",\n    \"completed_at\": \"2023-03-27T07:22:20.555Z\",\n    \"created_at\": \"2023-03-27T05:08:22.824Z\",\n    \"updated_at\": \"2023-03-27T07:22:20.555Z\"\n}"
+				},
+				{
+					"name": "200 - set task back to normal",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n    \"description\": \"Create a RESTful API using Node.js and a database of your choice - live\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/tasks/12454c6e-165d-45b9-8b8f-86f17024142c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks",
+								"12454c6e-165d-45b9-8b8f-86f17024142c"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Mar 2023 07:23:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"12454c6e-165d-45b9-8b8f-86f17024142c\",\n    \"title\": \"Build a real-time chat application with Node.js\",\n    \"description\": \"Create a chat application that allows users to communicate in real-time using Node.js and Socket.io\",\n    \"completed_at\": null,\n    \"created_at\": \"2023-03-27T05:08:22.824Z\",\n    \"updated_at\": \"2023-03-27T07:23:02.638Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "delete a task",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"description\": \"Create a RESTful API using Node.js and a database of your choice - live\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/tasks/74ee6f70-9cfc-4cdf-a4c4-5f2f80a76333",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks",
+						"74ee6f70-9cfc-4cdf-a4c4-5f2f80a76333"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "400 - without both",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Mar 2023 04:28:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Title and description are required\"\n}"
+				},
+				{
+					"name": "201 - create task",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Read about APIs\",\n    \"description\" : \"read article on medium about APIs\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Mar 2023 04:34:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"5972964e-ee54-43c3-842d-e10afd8b23f8\",\n    \"title\": \"Read about APIs\",\n    \"description\": \"read article on medium about APIs\",\n    \"completed_at\": null,\n    \"created_at\": \"2023-03-27T04:34:40.002Z\",\n    \"updated_at\": \"2023-03-27T04:34:40.002Z\"\n}"
+				}
+			]
+		}
+	]
+}
