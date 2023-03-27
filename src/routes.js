@@ -133,11 +133,38 @@ export const routes = [
     method: 'PATCH',
     url: buildRouteUrl('/tasks/:id'),
     handler: (req, res) => {
-      return res.end(
-        JSON.stringify({
-          message: 'PATCH /tasks/:id',
-        })
+      // TODO: Check if the task exists - id is valid
+      const { id } = req.params;
+      const filter = {};
+      if (id) {
+        filter.id = id;
+      }
+      const task = database.select('tasks', filter || null);
+
+      if (!task || task.length !== 1) {
+        return res.writeHead(404).end(
+          JSON.stringify({
+            message: 'Task not found',
+          })
+        );
+      }
+
+      // check if the task is already completed
+      const isCompleted = task[0].completed_at;
+      const completed_at = isCompleted ? null : new Date();
+
+      // update the task in the database - and update the updated_at field
+      const updatedTask = database.update(
+        'tasks',
+        { id },
+        {
+          completed_at: completed_at,
+          updated_at: new Date(),
+        }
       );
+
+      // return the task
+      return res.writeHead(200).end(JSON.stringify(updatedTask));
     },
   },
 ];
