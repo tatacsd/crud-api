@@ -60,8 +60,7 @@ export class Database {
   }
 
   update(table, id, data) {
-    const index = this.#database[table].findIndex((item) => item.id === id);
-
+    const index = this.#database[table].findIndex((item) => item.id === id.id);
     // if the id exists, update the item
     if (index !== -1) {
       this.#database[table][index] = {
@@ -69,7 +68,9 @@ export class Database {
         ...data, // update the data
       };
       this.#persist();
+      return this.#database[table][index];
     }
+    return null;
   }
 
   #seed() {
