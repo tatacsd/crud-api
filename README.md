@@ -105,3 +105,12 @@ $ npm i
 $ npm run dev
 ```
 
+## To import the csv file
+```bash
+$ cd crud-api
+```
+```bash
+node --watch stream/read-csv-file.js
+```
+
+
